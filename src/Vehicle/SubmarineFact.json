@@ -40,17 +40,26 @@
     "enumStrings":      "Disabled,Enabled",
     "enumValues":       "0,1"
 },
-{    "name":            "rangefinderDistance",
+{
+    "name":            "rangefinderDistance",
     "shortDesc": "Rangefinder",
     "type":             "float",
     "decimalPlaces":    2,
     "units":            "meters"
 },
-{   "name":             "rollPitchToggle",
+{
+    "name":             "rollPitchToggle",
     "shortDesc": "Roll/Pitch Toggle",
     "type":             "int16",
     "enumStrings":      "Disabled,Enabled,Unavailable",
     "enumValues":       "0,1,2"
+},
+{
+    "name":             "utGauge",
+    "shortDesc": "Thickness",
+    "type":             "float",
+    "decimalPlaces":    3,
+    "units":            "mm"
 }
 ]
 }

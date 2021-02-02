@@ -1,24 +1,17 @@
 /*=====================================================================
-
  QGroundControl Open Source Ground Control Station
-
  (c) 2009 - 2014 QGROUNDCONTROL PROJECT <http://www.qgroundcontrol.org>
-
  This file is part of the QGROUNDCONTROL project
-
  QGROUNDCONTROL is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
-
  QGROUNDCONTROL is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
-
  You should have received a copy of the GNU General Public License
  along with QGROUNDCONTROL. If not, see <http://www.gnu.org/licenses/>.
-
  ======================================================================*/
 
 /// @file
@@ -40,7 +33,8 @@ public:
     Q_PROPERTY(Fact* lightsLevel1        READ lightsLevel1        CONSTANT)
     Q_PROPERTY(Fact* lightsLevel2        READ lightsLevel2        CONSTANT)
     Q_PROPERTY(Fact* pilotGain           READ pilotGain           CONSTANT)
-    Q_PROPERTY(Fact* inputHold           READ inputHold     CONSTANT)
+    Q_PROPERTY(Fact* inputHold           READ inputHold           CONSTANT)
+    Q_PROPERTY(Fact* utGauge             READ utGauge             CONSTANT) // Added UT Gauge
     Q_PROPERTY(Fact* rangefinderDistance READ rangefinderDistance CONSTANT)
 
     Fact* camTilt             (void) { return &_camTiltFact; }
@@ -49,6 +43,7 @@ public:
     Fact* lightsLevel2        (void) { return &_lightsLevel2Fact; }
     Fact* pilotGain           (void) { return &_pilotGainFact; }
     Fact* inputHold           (void) { return &_inputHoldFact; }
+    Fact* utGauge             (void) { return &_utGaugeFact; }              // Added UT Gauge
     Fact* rangefinderDistance (void) { return &_rangefinderDistanceFact; }
 
     static const char* _camTiltFactName;
@@ -58,6 +53,7 @@ public:
     static const char* _pilotGainFactName;
     static const char* _inputHoldFactName;
     static const char* _rollPitchToggleFactName;
+    static const char* _utGaugeFactName;                                    // Added UT Gauge
     static const char* _rangefinderDistanceFactName;
 
     static const char* _settingsGroup;
@@ -70,6 +66,7 @@ private:
     Fact            _pilotGainFact;
     Fact            _inputHoldFact;
     Fact            _rollPitchToggleFact;
+    Fact            _utGaugeFact;                                           // Added UT Gauge
     Fact            _rangefinderDistanceFact;
 };
 
