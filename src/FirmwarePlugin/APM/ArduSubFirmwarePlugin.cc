@@ -1,24 +1,17 @@
 /*=====================================================================
-
  QGroundControl Open Source Ground Control Station
-
  (c) 2009 - 2015 QGROUNDCONTROL PROJECT <http://www.qgroundcontrol.org>
-
  This file is part of the QGROUNDCONTROL project
-
  QGROUNDCONTROL is free software: you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
-
  QGROUNDCONTROL is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
-
  You should have received a copy of the GNU General Public License
  along with QGROUNDCONTROL. If not, see <http://www.gnu.org/licenses/>.
-
  ======================================================================*/
 
 /// @file
@@ -206,7 +199,7 @@ const QVariantList& ArduSubFirmwarePlugin::modeIndicators(const Vehicle* vehicle
     Q_UNUSED(vehicle);
     //-- Sub specific list of indicators (Enter your modified list here)
     if(_modeIndicators.size() == 0) {
-        _modeIndicators = QVariantList({
+      _modeIndicators = QVariantList({
             QVariant::fromValue(QUrl::fromUserInput("qrc:/toolbar/ModeIndicator.qml")),
             QVariant::fromValue(QUrl::fromUserInput("qrc:/toolbar/ArmedIndicator.qml")),
         });
@@ -235,6 +228,8 @@ void ArduSubFirmwarePlugin::_handleNamedValueFloat(mavlink_message_t* message)
         _infoFactGroup.getFact("inputHold")->setRawValue(value.value);
     } else if (name == "RollPitch") {
         _infoFactGroup.getFact("rollPitchToggle")->setRawValue(value.value);
+    } else if (name == "UTGauge") {
+      _infoFactGroup.getFact("utGauge")->setRawValue(value.value);                              // Added UT Gauge
     }
 }
 
@@ -271,6 +266,7 @@ const char* APMSubmarineFactGroup::_lightsLevel2FactName        = "lights2";
 const char* APMSubmarineFactGroup::_pilotGainFactName           = "pilotGain";
 const char* APMSubmarineFactGroup::_inputHoldFactName           = "inputHold";
 const char* APMSubmarineFactGroup::_rollPitchToggleFactName     = "rollPitchToggle";
+const char* APMSubmarineFactGroup::_utGaugeFactName             = "utGauge";                    // Added UT Gauge
 const char* APMSubmarineFactGroup::_rangefinderDistanceFactName = "rangefinderDistance";
 
 APMSubmarineFactGroup::APMSubmarineFactGroup(QObject* parent)
@@ -282,6 +278,7 @@ APMSubmarineFactGroup::APMSubmarineFactGroup(QObject* parent)
     , _pilotGainFact           (0, _pilotGainFactName,           FactMetaData::valueTypeDouble)
     , _inputHoldFact           (0, _inputHoldFactName,           FactMetaData::valueTypeDouble)
     , _rollPitchToggleFact     (0, _rollPitchToggleFactName,     FactMetaData::valueTypeDouble)
+    , _utGaugeFact             (0, _utGaugeFactName,             FactMetaData::valueTypeDouble) // Added UT Gauge
     , _rangefinderDistanceFact (0, _rangefinderDistanceFactName, FactMetaData::valueTypeDouble)
 {
     _addFact(&_camTiltFact,             _camTiltFactName);
@@ -291,6 +288,7 @@ APMSubmarineFactGroup::APMSubmarineFactGroup(QObject* parent)
     _addFact(&_pilotGainFact,           _pilotGainFactName);
     _addFact(&_inputHoldFact,           _inputHoldFactName);
     _addFact(&_rollPitchToggleFact    , _rollPitchToggleFactName);
+    _addFact(&_utGaugeFact            , _utGaugeFactName);                                      // Added UT Gauge
     _addFact(&_rangefinderDistanceFact, _rangefinderDistanceFactName);
 
     // Start out as not available "--.--"
@@ -301,6 +299,7 @@ APMSubmarineFactGroup::APMSubmarineFactGroup(QObject* parent)
     _pilotGainFact.setRawValue           (std::numeric_limits<float>::quiet_NaN());
     _inputHoldFact.setRawValue           (std::numeric_limits<float>::quiet_NaN());
     _rollPitchToggleFact.setRawValue     (2); // 2 shows "Unavailable" in older firmwares
+    _utGaugeFact.setRawValue             (std::numeric_limits<float>::quiet_NaN());             // Added UT Gauge
     _rangefinderDistanceFact.setRawValue (std::numeric_limits<float>::quiet_NaN());
 
 }

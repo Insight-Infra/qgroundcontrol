@@ -23,3 +23,9 @@ Key Links:
 * [Discussion/Support](https://docs.qgroundcontrol.com/en/Support/Support.html)
 * [Contributing](https://dev.qgroundcontrol.com/en/contribute/)
 * [License](https://github.com/mavlink/qgroundcontrol/blob/master/COPYING.md)
+
+# Insight
+To get the latest updates from the base `qgroundcontrol` library, use `git pull origin master`, merge as required, and re-build as in the build link above.
+
+This repo includes: 
+* file modifications to allow UT Gauge to come up as a reading in QGC
