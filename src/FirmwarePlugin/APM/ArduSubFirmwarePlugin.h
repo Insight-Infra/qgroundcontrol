@@ -40,7 +40,8 @@ public:
     Q_PROPERTY(Fact* lightsLevel1        READ lightsLevel1        CONSTANT)
     Q_PROPERTY(Fact* lightsLevel2        READ lightsLevel2        CONSTANT)
     Q_PROPERTY(Fact* pilotGain           READ pilotGain           CONSTANT)
-    Q_PROPERTY(Fact* inputHold           READ inputHold     CONSTANT)
+    Q_PROPERTY(Fact* inputHold           READ inputHold           CONSTANT)
+    Q_PROPERTY(Fact* utGauge             READ utGauge             CONSTANT) // Added UT Gauge
     Q_PROPERTY(Fact* rangefinderDistance READ rangefinderDistance CONSTANT)
 
     Fact* camTilt             (void) { return &_camTiltFact; }
@@ -49,6 +50,7 @@ public:
     Fact* lightsLevel2        (void) { return &_lightsLevel2Fact; }
     Fact* pilotGain           (void) { return &_pilotGainFact; }
     Fact* inputHold           (void) { return &_inputHoldFact; }
+    Fact* utGauge             (void) { return &_utGaugeFact; }              // Added UT Gauge
     Fact* rangefinderDistance (void) { return &_rangefinderDistanceFact; }
 
     static const char* _camTiltFactName;
@@ -58,7 +60,7 @@ public:
     static const char* _pilotGainFactName;
     static const char* _inputHoldFactName;
     static const char* _rangefinderDistanceFactName;
-
+    static const char* _utGaugeFactName;                                    // Added UT Gauge
     static const char* _settingsGroup;
 
 private:
@@ -68,6 +70,7 @@ private:
     Fact            _lightsLevel2Fact;
     Fact            _pilotGainFact;
     Fact            _inputHoldFact;
+    Fact            _utGaugeFact;                                           // Added UT Gauge
     Fact            _rangefinderDistanceFact;
 };
 
